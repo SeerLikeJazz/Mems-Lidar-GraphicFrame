@@ -1,6 +1,7 @@
 import time, traceback
 from multiprocessing import Process, Queue, Value
 import queue
+from datetime import datetime
 from .device_socket import UsbCDC_socket as device_socket
 
 CAP_SIGNAL = 10
@@ -16,7 +17,7 @@ class MyDevice(Process):
         print("initing iRecorder")
         Process.__init__(self, daemon=True)
         self.socket_flag = socket_flag
-        self.__raw_data = Queue(5000)
+        self.__raw_data = Queue(50000)
         self.__cap_status = Value("i", CAP_TERMINATED)
         self.__battery = Value("i", -1)
         self.port = port
@@ -87,7 +88,7 @@ class MyDevice(Process):
         self.socket_flag.value = 1
         self.__socket = device_socket(self.port) # 打开了串口
         try:
-            self.__socket.connect_socket()
+            self.__socket.connect_socket(self.__socket.order[16000])
             self.__socket.stop_recv()
             # self.__battery.value = self.__socket.send_heartbeat()
         except Exception:
@@ -144,7 +145,7 @@ class MyDevice(Process):
                             data, block=False
                         )  # assure complete collection
                 except queue.Full:
-                    print(">>>queue full<<<")
+                    print(">>>queue full<<<", datetime.now())
                     self.socket_flag.value = 9
                     self.__cap_status.value = CAP_END
                 except:

@@ -13,9 +13,9 @@ class Parser:
         self.__last_num = 255
 
         self.__start = 2
-        self.__checksum = -4
-        self.__trigger = -3
-        self.__battery = -2
+        # self.__checksum = -4
+        # self.__trigger = -3
+        # self.__battery = -2
         self.__packet = -1
         self.packet_drop_count = 0
         length = self.num_channels * self.ch_bytes + abs(self.__packet)

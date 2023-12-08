@@ -46,13 +46,13 @@ class SigPlot(pg.PlotWidget):
         if self.last_position == self.curr_position:
             return
         for i in range(self.channels):
-            self.curve[i].setData(y=self.Data_y[i] + self.vert_scale * (2 * i + 1))
+            self.curve[i].setData(y=self.Data_y[i] + self.vert_scale * 1000 * (2 * i + 1))
         self.vLine.setPos(self.curr_position)
 
     def __init_canvas(self):
         # Remove all items from the PlotItem’s ViewBox.
         self.plotItem.clear()
-        self.display_length = int(self.fs * self.time_scale)
+        self.display_length = int(self.fs * self.time_scale / 1000)
         self.Data_y = np.zeros((self.channels, self.display_length))
         self.last_position = 0
         self.curr_position = 0
@@ -66,7 +66,7 @@ class SigPlot(pg.PlotWidget):
             pen = pg.mkPen(self.__generate_cool_colors(), width=0.7)
             # 实例化单个绘图曲线
             curve = pg.PlotCurveItem(
-                self.Data_y[i] + (i * 2 + 1) * self.vert_scale,
+                self.Data_y[i] + (i * 2 + 1) * self.vert_scale * 1000,
                 pen=pen,
                 antialias=True,
             )
@@ -90,9 +90,9 @@ class SigPlot(pg.PlotWidget):
 
     def __set_y_ticks(self):
     #     # 设置Y轴高度
-        self.setYRange(0, self.channels * 2 * self.vert_scale, padding=0)
+        self.setYRange(0, self.channels * 2 * self.vert_scale * 1000, padding=0)
         ax = self.plotItem.getAxis("left")
-        ax.setTicks([[((i * 2 + 1) * self.vert_scale, "C" + str(i))
+        ax.setTicks([[((i * 2 + 1) * self.vert_scale * 1000, "C" + str(i))
                     for i in range(0, self.channels)
                     ]])
 

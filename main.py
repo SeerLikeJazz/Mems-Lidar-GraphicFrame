@@ -15,8 +15,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.eeg_channels = 2
         self.fs = 16000
-        self.time_scale = 5  # seconds
-        self.vert_scale = 100  # uV
+        self.time_scale = 500  # milliseconds
+        self.vert_scale = 200  # uV
         self.GroupBox_signal.setTitle(
             "EEG Signal({}\u00b5V/Div-{}s/page)".format(int(self.vert_scale), self.time_scale)
         )
@@ -49,20 +49,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.pushButton_connect.setEnabled(False)  # 失能connect按钮（置灰）
         # connect slot
         self.comboBox_timescale.currentIndexChanged.connect(self.timebaseChanged)
-        self.comboBox_timescale.setItemData(0, 1.0)
-        self.comboBox_timescale.setItemData(1, 2.0)
-        self.comboBox_timescale.setItemData(2, 5.0)
-        self.comboBox_timescale.setItemData(3, 10.0)
-        self.comboBox_timescale.setItemData(4, 15.0)
+        self.comboBox_timescale.setItemData(0, 20)
+        self.comboBox_timescale.setItemData(1, 50)
+        self.comboBox_timescale.setItemData(2, 100)
+        self.comboBox_timescale.setItemData(3, 200)
+        self.comboBox_timescale.setItemData(4, 500)
+        self.comboBox_timescale.setItemData(5, 1000)
+        self.comboBox_timescale.setItemData(6, 4000)
         self.comboBox_vertscale.currentIndexChanged.connect(self.scaleChanged)
         self.comboBox_vertscale.setItemData(0, 10)
-        self.comboBox_vertscale.setItemData(1, 20)
-        self.comboBox_vertscale.setItemData(2, 40)
+        self.comboBox_vertscale.setItemData(1, 25)
+        self.comboBox_vertscale.setItemData(2, 50)
         self.comboBox_vertscale.setItemData(3, 100)
-        self.comboBox_vertscale.setItemData(4, 300)
-        self.comboBox_vertscale.setItemData(5, 700)
-        self.comboBox_vertscale.setItemData(6, 1000)
-        self.comboBox_vertscale.setItemData(7, 300000)
+        self.comboBox_vertscale.setItemData(4, 200)
 
 
     # 按键
@@ -146,14 +145,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.pushButton_connect.setText("Disconnect")
             self.pushButton_start.setEnabled(True)  # 使能start按钮
             self.pushButton_search.setEnabled(False)  # 失能search按钮
-            bat = self.iRecorder.get_battery_value()
-            if (self.battery_value != bat) and (bat >= 0) and (bat <= 100):
-                self.battery_value = bat
-                self.label_battery.setText("{}%".format(self.battery_value))
-                if self.battery_value > 20:
-                    self.label_battery.setStyleSheet("color: black")
-                else:
-                    self.label_battery.setStyleSheet("color: red")
+            # bat = self.iRecorder.get_battery_value()
+            # if (self.battery_value != bat) and (bat >= 0) and (bat <= 100):
+            #     self.battery_value = bat
+            #     self.label_battery.setText("{}%".format(self.battery_value))
+            #     if self.battery_value > 20:
+            #         self.label_battery.setStyleSheet("color: black")
+            #     else:
+            #         self.label_battery.setStyleSheet("color: red")
         else:
             if self.socket_flag.value == 3:
                 warn = "Data transmission timeout"

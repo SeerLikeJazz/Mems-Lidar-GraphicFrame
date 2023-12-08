@@ -27,9 +27,9 @@ class UsbCDC_socket():
         import serial
         self.__socket = serial.Serial(port=port)  # If a "port" is given, then the port will be opened immediately
 
-    def connect_socket(self):
+    def connect_socket(self, samplerate):
         # self.__socket.flushInput()
-        self.__socket.write(self.order[16000])
+        self.__socket.write(samplerate)
         time.sleep(0.1)
         self.__socket.read_all()
 

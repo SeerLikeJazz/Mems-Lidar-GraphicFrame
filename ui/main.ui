@@ -317,36 +317,46 @@
                    <widget class="QComboBox" name="comboBox_timescale">
                     <property name="maximumSize">
                      <size>
-                      <width>61</width>
+                      <width>65</width>
                       <height>16777215</height>
                      </size>
                     </property>
                     <property name="currentIndex">
-                     <number>2</number>
+                     <number>4</number>
                     </property>
                     <item>
                      <property name="text">
-                      <string>1</string>
+                      <string>20</string>
                      </property>
                     </item>
                     <item>
                      <property name="text">
-                      <string>2</string>
+                      <string>50</string>
                      </property>
                     </item>
                     <item>
                      <property name="text">
-                      <string>5</string>
+                      <string>100</string>
                      </property>
                     </item>
                     <item>
                      <property name="text">
-                      <string>10</string>
+                      <string>200</string>
                      </property>
                     </item>
                     <item>
                      <property name="text">
-                      <string>15</string>
+                      <string>500</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>1000</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>4000</string>
                      </property>
                     </item>
                    </widget>
@@ -360,7 +370,7 @@
                      </size>
                     </property>
                     <property name="text">
-                     <string>S</string>
+                     <string>ms</string>
                     </property>
                    </widget>
                   </item>
@@ -379,51 +389,36 @@
                    <widget class="QComboBox" name="comboBox_vertscale">
                     <property name="maximumSize">
                      <size>
-                      <width>61</width>
+                      <width>65</width>
                       <height>16777215</height>
                      </size>
                     </property>
                     <property name="currentIndex">
-                     <number>3</number>
+                     <number>4</number>
                     </property>
                     <item>
                      <property name="text">
-                      <string>10µV</string>
+                      <string>10mV</string>
                      </property>
                     </item>
                     <item>
                      <property name="text">
-                      <string>20µV</string>
+                      <string>25mV</string>
                      </property>
                     </item>
                     <item>
                      <property name="text">
-                      <string>40µV</string>
+                      <string>50mV</string>
                      </property>
                     </item>
                     <item>
                      <property name="text">
-                      <string>100µV</string>
+                      <string>100mV</string>
                      </property>
                     </item>
                     <item>
                      <property name="text">
-                      <string>300µV</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>700µV</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>1mV</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>3mV</string>
+                      <string>200mV</string>
                      </property>
                     </item>
                    </widget>
@@ -464,10 +459,10 @@
                   <item>
                    <widget class="QComboBox" name="comboBox_highpass">
                     <property name="currentText">
-                     <string>0.1</string>
+                     <string>None</string>
                     </property>
                     <property name="currentIndex">
-                     <number>1</number>
+                     <number>0</number>
                     </property>
                     <item>
                      <property name="text">
@@ -523,7 +518,7 @@
                   <item>
                    <widget class="QComboBox" name="comboBox_lowpass">
                     <property name="currentIndex">
-                     <number>1</number>
+                     <number>0</number>
                     </property>
                     <item>
                      <property name="text">
@@ -574,7 +569,7 @@
                   <item>
                    <widget class="QComboBox" name="comboBox_notch">
                     <property name="currentIndex">
-                     <number>1</number>
+                     <number>0</number>
                     </property>
                     <item>
                      <property name="text">

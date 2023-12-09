@@ -18,7 +18,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.time_scale = 500  # milliseconds
         self.vert_scale = 200  # uV
         self.GroupBox_signal.setTitle(
-            "EEG Signal({}\u00b5V/Div-{}s/page)".format(int(self.vert_scale), self.time_scale)
+            "EEG Signal({}mV/Div-{}ms/page)".format(int(self.vert_scale), self.time_scale)
         )
         self.eeg_plot = SigPlot(
             fs=self.fs,
@@ -87,9 +87,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.iRecorder = MyDevice(
                     port,
                     self.socket_flag,
+                    self.eeg_channels,
+                    self.fs
                 )
                 self.iRecorder.start()
-                self.battery_value = -1  # connect的时候就显示电量
+                # self.battery_value = -1  # connect的时候就显示电量
                 self.eeg_watchdog_timer.start(500)
             else:
                 QMessageBox.information(
@@ -181,7 +183,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             + self.comboBox_vertscale.currentText()
             + "/Div-"
             + self.comboBox_timescale.currentText()
-            + "s/page)"
+            + "ms/page)"
         )
         self.eeg_plot.update_x_scale(self.time_scale)
         self._thLock.release()
@@ -194,7 +196,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             + self.comboBox_vertscale.currentText()
             + "/Div-"
             + self.comboBox_timescale.currentText()
-            + "s/page)"
+            + "ms/page)"
         )
         self.eeg_plot.update_y_scale(self.vert_scale)
         self._thLock.release()
@@ -286,7 +288,7 @@ if __name__ == "__main__":
     #     qss = "".join(file.readlines()).strip("\n")
     app = QApplication()
     # app.setStyleSheet(qss)
-    app.setWindowIcon(QIcon("logo.ico"))
+    app.setWindowIcon(QIcon("mirror.jpg"))
     main = MainWindow()
     main.show()
     sys.exit(app.exec())

@@ -42,17 +42,6 @@ class Ui_MainWindow(object):
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.label_menu_logo = QLabel(self.frame_menu)
-        self.label_menu_logo.setObjectName(u"label_menu_logo")
-        self.label_menu_logo.setMinimumSize(QSize(100, 50))
-        self.label_menu_logo.setMaximumSize(QSize(70, 50))
-        self.label_menu_logo.setPixmap(QPixmap(u":/logos/resources/logo.png"))
-        self.label_menu_logo.setScaledContents(True)
-        self.label_menu_logo.setAlignment(Qt.AlignCenter)
-        self.label_menu_logo.setMargin(3)
-
-        self.verticalLayout.addWidget(self.label_menu_logo, 0, Qt.AlignHCenter)
-
         self.tabWidget = QTabWidget(self.frame_menu)
         self.tabWidget.setObjectName(u"tabWidget")
         self.tabWidget.setTabPosition(QTabWidget.North)
@@ -326,37 +315,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.tabWidget)
 
-        self.frame_battery = QFrame(self.frame_menu)
-        self.frame_battery.setObjectName(u"frame_battery")
-        self.frame_battery.setMinimumSize(QSize(50, 0))
-        self.horizontalLayout_battery = QHBoxLayout(self.frame_battery)
-        self.horizontalLayout_battery.setSpacing(1)
-        self.horizontalLayout_battery.setObjectName(u"horizontalLayout_battery")
-        self.horizontalLayout_battery.setSizeConstraint(QLayout.SetDefaultConstraint)
-        self.horizontalLayout_battery.setContentsMargins(0, 0, 0, 0)
-        self.label_3 = QLabel(self.frame_battery)
-        self.label_3.setObjectName(u"label_3")
-        self.label_3.setMinimumSize(QSize(25, 25))
-        self.label_3.setMaximumSize(QSize(24, 20))
-        self.label_3.setPixmap(QPixmap(u":/icons/resources/icons/battery.png"))
-        self.label_3.setScaledContents(True)
-        self.label_3.setTextInteractionFlags(Qt.NoTextInteraction)
-
-        self.horizontalLayout_battery.addWidget(self.label_3, 0, Qt.AlignLeft|Qt.AlignVCenter)
-
-        self.label_battery = QLabel(self.frame_battery)
-        self.label_battery.setObjectName(u"label_battery")
-        self.label_battery.setMinimumSize(QSize(25, 20))
-        self.label_battery.setMaximumSize(QSize(30, 20))
-        self.label_battery.setTextFormat(Qt.AutoText)
-        self.label_battery.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-        self.label_battery.setTextInteractionFlags(Qt.NoTextInteraction)
-
-        self.horizontalLayout_battery.addWidget(self.label_battery, 0, Qt.AlignLeft|Qt.AlignVCenter)
-
-
-        self.verticalLayout.addWidget(self.frame_battery, 0, Qt.AlignLeft)
-
 
         self.horizontalLayout.addWidget(self.frame_menu)
 
@@ -438,8 +396,7 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"eConAlpha", None))
-        self.label_menu_logo.setText("")
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MEMS Mirror Scanning", None))
         self.groupBox_3.setTitle(QCoreApplication.translate("MainWindow", u"Config", None))
         self.pushButton_search.setText(QCoreApplication.translate("MainWindow", u"Search", None))
         self.pushButton_connect.setText(QCoreApplication.translate("MainWindow", u"Connect", None))
@@ -493,8 +450,6 @@ class Ui_MainWindow(object):
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"Hz", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Display", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), QCoreApplication.translate("MainWindow", u"Channels", None))
-        self.label_3.setText("")
-        self.label_battery.setText("")
         self.GroupBox_signal.setTitle(QCoreApplication.translate("MainWindow", u"EEG Signal(100\u00b5V/Div-2s/page)", None))
     # retranslateUi
 

@@ -5,7 +5,7 @@ class Parser:
     HOTKEY_TRIGGER = -2
     BATTERY = -1
 
-    def __init__(self, num_channels, fs):
+    def __init__(self, num_channels):
         self.num_channels = num_channels
         self.ch_bytes = 3
         self.scale_ratio = 0.02235174

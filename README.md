@@ -5,22 +5,16 @@ Resolution: 22nV
 Sample rate: 16kHz  
 Offset: 0V  
 
+### 09.12.23
+- 参数抽象出来
+- 调整界面
+
 ### 08.12.23
-- Document: device_socket.py  
-Func: def connect_socket(self, samplerate)  
-**samplerate** changeable  
 
-Document: data_reader.py  
-Parser(2,500)  
-changeable  
+queue full 报错  ，不够大  
 
-queue full 报错  
+调整data_timer 15->1  ???  读取数据  
 
-调整data_timer 15->1  ???  
+error:  High Pass-> RuntimeWarning: overflow encountered in cast    
 
-
-何种情况下，串口异常关闭会被一直占用    
-
-error:  High Pass-> RuntimeWarning: overflow encountered in cast  
-
-通道二没信号  
+time < 500ms, 竖线去掉  

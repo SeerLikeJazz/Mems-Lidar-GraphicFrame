@@ -13,14 +13,17 @@ CAP_TERMINATED = 102
 
 
 class MyDevice(Process):
-    def __init__(self, port, socket_flag: Value):
+    def __init__(self, port, socket_flag: Value, eeg_channel, fs):
         print("initing iRecorder")
         Process.__init__(self, daemon=True)
         self.socket_flag = socket_flag
         self.__raw_data = Queue(50000)
         self.__cap_status = Value("i", CAP_TERMINATED)
-        self.__battery = Value("i", -1)
+        # self.__battery = Value("i", -1)
         self.port = port
+        self.eeg_channel = eeg_channel
+        self.fs = fs
+
 
     @staticmethod
     def get_device():
@@ -65,8 +68,8 @@ class MyDevice(Process):
         while self.__cap_status.value != CAP_TERMINATED:
             time.sleep(0.05)
 
-    def get_battery_value(self):
-        return self.__battery.value
+    # def get_battery_value(self):
+    #     return self.__battery.value
 
     def socket_recv(self):
         while self.__ThreadSwitch_of_socket_recv:
@@ -88,7 +91,7 @@ class MyDevice(Process):
         self.socket_flag.value = 1
         self.__socket = device_socket(self.port) # 打开了串口
         try:
-            self.__socket.connect_socket(self.__socket.order[16000])
+            self.__socket.connect_socket(self.__socket.order.get(self.fs))
             self.__socket.stop_recv()
             # self.__battery.value = self.__socket.send_heartbeat()
         except Exception:
@@ -100,7 +103,7 @@ class MyDevice(Process):
         self.__timestamp = time.time()
         self.__recv_queue = queue.Queue()
         self.__cap_status.value = CAP_IDLE_START
-        self.__parser = Parser(2,500)
+        self.__parser = Parser(self.eeg_channel)
         self.__ThreadSwitch_of_socket_recv = False
         self.__recv_thread = threading.Thread(target=self.socket_recv, daemon=True)
         self.__recv_thread.start()
@@ -172,7 +175,7 @@ class MyDevice(Process):
                 self.socket_flag.value = 2
                 if (time.time() - self.__timestamp) > 5:
                     try:
-                        self.__battery.value = self.__socket.send_heartbeat()
+                        # self.__battery.value = self.__socket.send_heartbeat()
                         # heartbeat to keep socket alive
                         self.__timestamp = time.time()
                         print(">>>Stayin' alive, stayin' alive")

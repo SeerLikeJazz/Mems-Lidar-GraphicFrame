@@ -60,11 +60,11 @@ class UsbCDC_socket():
         time.sleep(0.1)
         self.__socket.read_all()
 
-    def send_heartbeat(self):
-        self.__socket.write(self.order['B'])
-        time.sleep(0.5)
-        ret = self.__socket.read(len(self.order['B']) + 1)
-        # print('batt raw', ret)
-        battery = int(ret[-1])
-        print('batt level:', battery)
-        return battery
+    # def send_heartbeat(self):
+    #     self.__socket.write(self.order['B'])
+    #     time.sleep(0.5)
+    #     ret = self.__socket.read(len(self.order['B']) + 1)
+    #     # print('batt raw', ret)
+    #     battery = int(ret[-1])
+    #     print('batt level:', battery)
+    #     return battery

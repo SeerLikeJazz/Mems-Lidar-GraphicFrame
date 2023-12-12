@@ -5,6 +5,9 @@ Resolution: 22nV
 Sample rate: 16kHz  
 Offset: 0V  
 
+### 13.12.23
+- y轴加上水平线
+
 ### 09.12.23
 - 参数抽象出来
 - 调整界面

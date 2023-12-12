@@ -59,7 +59,7 @@ class SigPlot(pg.PlotWidget):
         self.__set_x_ticks()
         self.__set_y_ticks()
         # 显示网格线
-        self.plotItem.showGrid(x=True)
+        self.plotItem.showGrid(x=True, y=True)
         self.curve = []  # type: list[pg.PlotDataItem]
         for i in range(self.channels):
             # 设置线条的颜色

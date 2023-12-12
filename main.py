@@ -105,7 +105,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.eeg_watchdog_timer.stop()
             self.iRecorder.stop_acquisition()  # 设置进程run的状态，发送'R'指令
             self.pushButton_start.setText("Start")
-            self.label_battery.setText("")
+            # self.label_battery.setText("")
             self.pushButton_connect.setText("Connect")
             self.pushButton_search.setEnabled(True)  # 使能search按钮
             self.pushButton_start.setEnabled(False)  # 失能start按钮
